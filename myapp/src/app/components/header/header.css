@@ -13,8 +13,10 @@
 .logo{
     width: 100px;
     height: 100px;
-    object-fit: contain;
+    border-radius: 30%;
     margin-left: 20px;
+    position: fixed;
+    
 }
 .ast-icon-shopping-bag svg {
     width: 30px;    

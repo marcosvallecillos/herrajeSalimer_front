@@ -1,28 +1,32 @@
-@for (mueble of muebles; track mueble.id) {
-<div class="card h-100 shadow-sm">
-        <button type="button" class="close" (click)="deleteMueble(mueble)">
-            <i class="bi bi-x">X</i>
-        </button>
-        <img [src]="mueble?.imagen" [alt]="mueble?.nombre">
-     
-        
-  <div class="card-header">
-    <h5 class="card-title mb-0">{{ mueble?.nombre }}</h5>
-  </div>
-  <div class="card-body">
-    <p class="card-text">{{ mueble?.numero_piezas }}</p>
-   
-    <br><br>
 
-    <div class="d-flex gap-2">
-      <div class="btn-group">
-        <button class="btn btn-sm btn-success" disabled>
-          <i class="bi bi-check-circle"></i> Ver herrajes
-        </button>
-      
+
+<div class="container">
+
+<div class="row g-4 mt-9">
+  @for (mueble of muebles; track mueble.id) {
+    <div class="col-12 col-sm-6 col-md-4">
+      <div class="card h-100 shadow-sm">
+        <button type="button" class="btn-close position-absolute top- end-0 m-2" (click)="deleteMueble(mueble)"></button>
+
+        <img [src]="mueble?.imagen" [alt]="mueble?.nombre" class="card-img-top" style="object-fit: cover; height: 200px;">
+
+        <div class="card-header">
+      <h5 class="card-title mb-0">Nombre: {{ mueble?.nombre }}</h5>
+
+            </div>
+
+        <div class="card-body">
+          <p class="card-text">{{ mueble?.numero_piezas }} piezas</p>
+
+          <div class="d-flex justify-content-center mt-3">
+            <button class="btn btn-outline-primary btn-sm">
+              Ver herrajes
+            </button>
+          </div>
+        </div>
       </div>
-
     </div>
-  </div>
+  }
 </div>
-}
+
+ </div>
