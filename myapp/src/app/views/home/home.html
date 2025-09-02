@@ -1,6 +1,15 @@
 <section>
   <app-card [muebles]="muebles" (onDelete)="removeMueble($event)"></app-card>
 </section>
+<section>
 
-
+  @if (showForm) {
+    <app-form (searchTerm)="onSearchSubmitted($event)"></app-form>
+  }
+  
+  @if (!showForm) {
+    <app-search [searchTerm]="searchTerm" (backToForm)="onBackToForm()"></app-search>
+  }
+  
+  </section>
 

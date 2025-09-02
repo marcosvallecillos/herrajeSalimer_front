@@ -1,0 +1,15 @@
+<form (ngSubmit)="onSubmit()" #searchForm="ngForm">
+    <div class="answer-bank">
+        <div class="answer">
+            <input type="text" 
+                   name="searchTerm" 
+                   id="searchTerm" 
+                   [(ngModel)]="searchValue"
+                   placeholder="Introduce término de búsqueda" 
+                   required />
+        </div>
+        <div class="answer">
+            <input type="submit" value="Enviar" class="primary" />
+        </div>
+    </div>
+</form>

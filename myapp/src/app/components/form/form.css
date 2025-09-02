@@ -1,0 +1,55 @@
+form {
+  width: 100%;
+}
+
+.answer-bank {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.answer input[type="text"] {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  min-width: 260px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.answer input[type="text"]:focus {
+  border-color: #ffbf00;
+  box-shadow: 0 0 0 3px rgba(255, 191, 0, 0.2);
+}
+
+.answer input[type="submit"],
+.answer .primary {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: #ffbf00;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.05s ease, background-color 0.2s ease;
+}
+
+.answer input[type="submit"]:hover,
+.answer .primary:hover {
+  background-color: #e6ac00;
+}
+
+.answer input[type="submit"]:active,
+.answer .primary:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 520px) {
+  .answer input[type="text"] {
+    min-width: 200px;
+    width: 100%;
+  }
+}
+
