@@ -30,3 +30,7 @@
 </div>
 
  </div>
+<app-modal-delete [show]="showModal" [nombre]="selectedMueble?.nombre ?? ''" [numero_piezas]="(selectedMueble?.numero_piezas ?? '') + ''"
+  (confirm)="onConfirmMueble()"
+  (cancel)="onCancelMueble()">
+</app-modal-delete>

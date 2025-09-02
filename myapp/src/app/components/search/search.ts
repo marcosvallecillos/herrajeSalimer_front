@@ -38,10 +38,19 @@ export class Search {
 
   searchMuebles() {
     this.selectedUser = null;
+    this.loading = true;
+    this.error = '';
+    this.mueble = [];
 
     this.apiService.searchMuebles(this.searchTerm).subscribe({
       next: (muebles) => {
         this.mueble = muebles;
+        this.loading = false;
+      },
+      error: () => {
+        this.error = 'Ocurrió un error al buscar.';
+        this.loading = false;
+        this.mueble = [];
       }
     });
   }

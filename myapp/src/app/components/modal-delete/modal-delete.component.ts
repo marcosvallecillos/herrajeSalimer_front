@@ -12,8 +12,6 @@ export class ModalDeleteComponent {
   @Input() show: boolean = false;
   @Input() nombre: string | null = '';
   @Input() numero_piezas: string = '';
-  @Input() servicio: string = '';
-  @Input() peluquero: string = '';
   isProcessing: boolean = false;
   @Output() confirm = new EventEmitter<void>();
   @Output() cancel = new EventEmitter<void>();

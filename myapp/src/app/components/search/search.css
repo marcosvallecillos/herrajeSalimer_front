@@ -48,3 +48,19 @@
   transform: translateY(1px);
 }
 
+.loading,
+.error,
+.no-results {
+  padding: 16px;
+  text-align: center;
+  color: #111827;
+}
+
+.loading {
+  color: #6b7280;
+}
+
+.error {
+  color: #b91c1c;
+}
+

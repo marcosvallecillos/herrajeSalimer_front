@@ -1,7 +1,11 @@
 <div class="journal">
  
-  
-  @if ( mueble.length > 0 && !selectedUser) {
+ 
+  @if (loading) {
+    <div class="loading">Cargando resultados...</div>
+  } @else if (error) {
+    <div class="error">{{ error }}</div>
+  } @else if ( mueble.length > 0 && !selectedUser) {
     <div class="first photo">
       <div>
         <div class="image-container2">
@@ -10,6 +14,11 @@
                  [alt]="m.nombre"
                  class="user-avatar"
                 >
+                <div class="user-info">
+                  <h4>{{ m.nombre }}</h4>
+                  <p>{{ m.numero_piezas }}</p>
+                </div>
+                <button> Ver Herrajes</button>
           }
           <button class="caption" (click)="onMainClick()">Volver</button>
         </div>

@@ -2,10 +2,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Mueble } from '../../models/herrajes.interface';
 import { ApiService } from '../../services/api-service.service';
+import { ModalDeleteComponent } from '../modal-delete/modal-delete.component';
 
 @Component({
   selector: 'app-card',
-  imports: [CommonModule],
+  imports: [CommonModule,ModalDeleteComponent],
   templateUrl: './card.html',
   styleUrl: './card.css'
 })
@@ -37,5 +38,9 @@ export class Card {
         }
       });
     }
+  }
+    onCancelMueble() {
+    this.showModal = false;
+    this.selectedMueble = null;
   }
 }
