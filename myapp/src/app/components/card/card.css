@@ -79,12 +79,7 @@
 .btn {
   border-radius: 10px;
 }
-.btn-outline-primary {
-  --bs-btn-color: var(--brand-primary);
-  --bs-btn-border-color: var(--brand-primary);
-  --bs-btn-hover-bg: var(--brand-primary);
-  --bs-btn-hover-border-color: var(--brand-primary);
-}
+
 
 /* Utilidades mínimas (por si no hay utilidades globales) */
 .d-flex {
@@ -104,6 +99,7 @@
 .btn-close {
   filter: invert(45%);
   transition: transform 120ms ease, filter 200ms ease;
+  z-index: 2;
 }
 .btn-close:hover {
   transform: scale(1.05);
