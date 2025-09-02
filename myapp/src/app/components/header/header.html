@@ -1,0 +1,78 @@
+<div class="header">
+
+    <nav class="navbar navbar-expand-lg" [class.menu-open]="isMenuOpen">
+       
+        <div class="container-fluid">
+            <button routerLink="/home-barber" style="background-color:transparent;border: none;">   <img src="../../../../images/logo_salimer.jpeg"  class="logo"alt="" style="font-size:36px;color:white;margin-top:-10px;cursor:pointer"> </button>
+                 <!--    <h1 style="color: white;cursor:pointer" routerLink="/home-barber"> HairBooking</h1> -->
+            <button class="navbar-toggler" 
+                    type="button" 
+                    (click)="toggleMenu()"
+                    [attr.aria-expanded]="isMenuOpen">
+                <span class="navbar-toggler-icon"></span>  
+            </button>
+          
+            <div class="collapse navbar-collapse" [class.show]="isMenuOpen">
+                <a class="navbar-brand" href="#" routerLink="/home-barber">
+                 
+                </a>
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link ms-3" routerLink="/home-barber" routerLinkActive="active">
+                            {{ getText('Inicio', 'Home') }}
+                        </a>
+                    </li>
+                    <hr>  
+                    <li class="nav-item ">
+                        <a class="nav-link ms-3 " routerLink="/list-price" routerLinkActive="active"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ getText('Lista Precios', 'Price List') }}
+                        </a>
+                    </li>
+                    <hr>  
+                    <li class="nav-item">
+                        <a class="nav-link ms-3" routerLink="/show-reserve" routerLinkActive="active">
+                            {{ getText('Reservar Cita', 'Reserve Quote') }}
+                        </a>
+                    </li>
+                    <hr>  
+                    <li class="nav-item">
+                        <a class="nav-link ms-3" routerLink="/products" routerLinkActive="active">
+                            {{ getText('Productos', 'Products') }}
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link ms-3" routerLink="/about-us" routerLinkActive="active">
+                            {{ getText('Sobre Nosotros', 'About Us') }}
+                        </a>
+                    </li>
+
+                    <hr>  
+                </ul>
+                <div class="dropdown language-selector">
+                    <button class="btn btn-link dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        {{ isSpanish ? 'ES' : 'EN' }}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-start">
+                        <li>
+                            <button class="dropdown-item" (click)="toggleLanguage('es')">
+                                ES
+                            </button>
+                            
+                      
+                        </li>
+                        <li>
+                            <button class="dropdown-item" (click)="toggleLanguage('en')">
+                                EN
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <hr>  
+              
+                
+            </div>
+        </div>
+    </nav>
+</div>

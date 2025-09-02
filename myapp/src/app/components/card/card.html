@@ -1,0 +1,28 @@
+@for (mueble of muebles; track mueble.id) {
+<div class="card h-100 shadow-sm">
+        <button type="button" class="close" (click)="deleteMueble(mueble)">
+            <i class="bi bi-x">X</i>
+        </button>
+        <img [src]="mueble?.imagen" [alt]="mueble?.nombre">
+     
+        
+  <div class="card-header">
+    <h5 class="card-title mb-0">{{ mueble?.nombre }}</h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{ mueble?.numero_piezas }}</p>
+   
+    <br><br>
+
+    <div class="d-flex gap-2">
+      <div class="btn-group">
+        <button class="btn btn-sm btn-success" disabled>
+          <i class="bi bi-check-circle"></i> Ver herrajes
+        </button>
+      
+      </div>
+
+    </div>
+  </div>
+</div>
+}
