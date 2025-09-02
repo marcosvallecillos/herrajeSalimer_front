@@ -1,1 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global base styles */
+:root {
+  --brand-primary: #1f4b99;
+  --brand-secondary: #ffbf00;
+  --text-color: #111827;
+  --muted-text: #6b7280;
+  --surface: #ffffff;
+  --background: #f7f7fb;
+  --radius: 12px;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+  color: var(--text-color);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Utility containers */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* Buttons */
+.btn-brand {
+  background-color: var(--brand-primary);
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 16px;
+}
+.btn-brand:hover {
+  background-color: #163b7a;
+  color: #fff;
+}
+.btn-secondary-brand {
+  background-color: var(--brand-secondary);
+  color: #111827;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 16px;
+}

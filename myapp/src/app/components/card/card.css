@@ -3,7 +3,7 @@
   display: block;
 }
 .container{
-  margin-top: 10%;
+  margin-top: 32px;
 }
 /* Tarjeta */
 .card {
@@ -23,7 +23,7 @@
 }
 .card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
 }
 
 /* Botón cerrar (X) */
@@ -60,7 +60,7 @@
 }
 .card-title {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: #111827;
 }
@@ -73,6 +73,17 @@
 .card-text {
   margin: 0;
   color: #374151;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 10px;
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--brand-primary);
+  --bs-btn-border-color: var(--brand-primary);
+  --bs-btn-hover-bg: var(--brand-primary);
+  --bs-btn-hover-border-color: var(--brand-primary);
 }
 
 /* Utilidades mínimas (por si no hay utilidades globales) */

@@ -1,6 +1,6 @@
 
 
-<div class="container">
+<div class="container page-container">
 
 <div class="row g-4 mt-9">
   @for (mueble of muebles; track mueble.id) {
@@ -11,15 +11,14 @@
         <img [src]="mueble?.imagen" [alt]="mueble?.nombre" class="card-img-top" style="object-fit: cover; height: 200px;">
 
         <div class="card-header">
-      <h5 class="card-title mb-0">Nombre: {{ mueble?.nombre }}</h5>
-
-            </div>
+          <h5 class="card-title mb-0">{{ mueble?.nombre }}</h5>
+        </div>
 
         <div class="card-body">
-          <p class="card-text">{{ mueble?.numero_piezas }} piezas</p>
+          <p class="card-text text-muted">{{ mueble?.numero_piezas }} piezas</p>
 
           <div class="d-flex justify-content-center mt-3">
-            <button class="btn btn-outline-primary btn-sm">
+            <button class="btn btn-outline-primary btn-sm px-3">
               Ver herrajes
             </button>
           </div>

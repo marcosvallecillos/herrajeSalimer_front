@@ -1,22 +1,21 @@
 
 .header {
-    height: 130px;
-    position: absolute;
-    top: 2%;
+    position: sticky;
+    top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    margin-top: 10px;
+    background: #ffffffcc;
+    backdrop-filter: saturate(180%) blur(6px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
 
 .logo{
-    width: 100px;
-    height: 100px;
-    border-radius: 30%;
-    margin-left: 20px;
-    position: fixed;
-    
+    width: 72px;
+    height: 72px;
+    border-radius: 16px;
+    margin-left: 8px;
 }
 .ast-icon-shopping-bag svg {
     width: 30px;    
@@ -32,7 +31,7 @@
 }
 
 .navbar {
-    padding: 10px 20px;
+    padding: 8px 12px;
     background-color: transparent;
     transition: all 0.3s ease;
 }
@@ -90,23 +89,23 @@
 
 /* Estilo para enlaces */
 .nav-link {
-    font-size: 1.2rem;
-    color: white;
+    font-size: 1rem;
+    color: #111827;
     font-weight: 500;   
 }
  @media (max-width:1062px) {
     .nav-link {
-        font-size: 1rem;
-        color: white;
+        font-size: 0.95rem;
+        color: #111827;
         font-weight: 500;   
     }
  }
 .nav-link:hover {
-    color: #ffc107;
+    color: var(--brand-primary);
 }
 .navbar-nav .nav-link.active {
-    color: #ffbf00 !important;
-    font-weight: bold !important;
+    color: var(--brand-primary) !important;
+    font-weight: 600 !important;
 }
 
 .navbar-nav .login-btn {
@@ -148,7 +147,7 @@
 
 /* Selector de idioma */
 .language-selector .btn-link {
-    color: white;
+    color: #111827;
     text-decoration: none;
     font-weight: 500;
     padding: 0.5rem 1rem;

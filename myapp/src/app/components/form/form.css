@@ -1,5 +1,6 @@
 form {
-  width: 100%;
+  width: 50%;
+  justify-content: center;
 }
 
 .answer-bank {

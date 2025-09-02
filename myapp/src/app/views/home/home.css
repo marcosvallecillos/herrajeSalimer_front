@@ -1,0 +1,8 @@
+/* Home layout spacing tweaks */
+:host {
+  display: block;
+}
+
+section {
+  margin-top: 16px;
+}
