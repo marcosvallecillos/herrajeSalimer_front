@@ -3,23 +3,22 @@
 }
 
 .first.photo {
-  display: flex;
-  justify-content: center;
+  display: block;
 }
 
-.image-container2 {
+.cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
   width: 100%;
 }
 
 .user-avatar {
   width: 100%;
-  height: 160px;
+  height: 180px;
   object-fit: cover;
   border-radius: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #e5e7eb;
   transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
 
@@ -28,24 +27,10 @@
   box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
-.caption {
-  margin-top: 10px;
-  padding: 10px 14px;
-  border-radius: 8px;
-  border: none;
-  background-color: #ffbf00;
-  color: #000;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.05s ease, background-color 0.2s ease;
-}
-
-.caption:hover {
-  background-color: #e6ac00;
-}
-
-.caption:active {
-  transform: translateY(1px);
+.back-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
 }
 
 .loading,
@@ -62,5 +47,29 @@
 
 .error {
   color: #b91c1c;
+}
+
+/* Card details */
+.result-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.section-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.herraje-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px dashed #f1f1f1;
+}
+
+.herraje-item:last-child {
+  border-bottom: none;
 }
 

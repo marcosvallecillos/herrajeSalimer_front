@@ -1,4 +1,4 @@
-<div class="journal">
+<div class="journal page-container">
 
   <!-- Loading -->
   @if (loading) {
@@ -17,27 +17,29 @@
     <div class="first photo">
       <div class="cards-container">
         @for (m of mueble; track m.id) {
-          <div class="card">
-            <div class="image-container">
-              <img [src]="m.imagen" [alt]="m.nombre" class="user-avatar">
+          <div class="result-card card shadow-sm">
+            <img [src]="m.imagen" [alt]="m.nombre" class="card-img-top user-avatar">
+            <div class="card-header">
+              <h5 class="card-title mb-0">{{ m.nombre }}</h5>
             </div>
-            <div class="card-content">
-              <h4>{{ m.nombre }}</h4>
-              <p>{{ m.numero_piezas }} piezas</p>
-            
-            </div>
-            <hr>
-              <div class="card-content">
-                <h3>Herrajes</h3>
+            <div class="card-body">
+              <p class="text-muted mb-2">{{ m.numero_piezas }} piezas</p>
+              <div class="herrajes">
+                <h6 class="section-title">Herrajes</h6>
                 @for (h of m.herrajes; track h.id) {
-                  <h4>{{ h.tipo }}</h4>
-                  <p>{{ h.cantidad }} piezas</p>
+                  <div class="herraje-item">
+                    <div class="herraje-title">{{ h.tipo }}</div>
+                    <div class="herraje-qty text-muted">{{ h.cantidad }} piezas</div>
+                  </div>
                 }
               </div>
+            </div>
           </div>
         }
       </div>
-      <button class="caption btn-main" (click)="onMainClick()">Volver</button>
+      <div class="back-row">
+        <button class="btn btn-secondary-brand px-4" (click)="onMainClick()">Volver</button>
+      </div>
     </div>
 
   <!-- No hay resultados -->
