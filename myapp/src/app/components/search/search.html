@@ -1,36 +1,50 @@
 <div class="journal">
- 
- 
-  @if (loading) {
-    <div class="loading">Cargando resultados...</div>
-  } @else if (error) {
-    <div class="error">{{ error }}</div>
-  } @else if ( mueble.length > 0 && !selectedUser) {
-    <div class="first photo">
-      <div>
-        <div class="image-container2">
-          @for (m of mueble; track m.id) {
-            <img [src]="m.imagen" 
-                 [alt]="m.nombre"
-                 class="user-avatar"
-                >
-                <div class="user-info">
-                  <h4>{{ m.nombre }}</h4>
-                  <p>{{ m.numero_piezas }}</p>
-                </div>
-                <button> Ver Herrajes</button>
-          }
-          <button class="caption" (click)="onMainClick()">Volver</button>
-        </div>
-        
-      </div>
-    </div>
-  } @else{
 
-    <div class="no-results">
+  <!-- Loading -->
+  @if (loading) {
+    <div class="loading card">
+      <p>Cargando resultados...</p>
+    </div>
+
+  <!-- Error -->
+  } @else if (error) {
+    <div class="error card">
+      <p>{{ error }}</p>
+    </div>
+
+  <!-- Resultados -->
+  } @else if (mueble.length > 0 && !selectedUser) {
+    <div class="first photo">
+      <div class="cards-container">
+        @for (m of mueble; track m.id) {
+          <div class="card">
+            <div class="image-container">
+              <img [src]="m.imagen" [alt]="m.nombre" class="user-avatar">
+            </div>
+            <div class="card-content">
+              <h4>{{ m.nombre }}</h4>
+              <p>{{ m.numero_piezas }} piezas</p>
+            
+            </div>
+            <hr>
+              <div class="card-content">
+                <h3>Herrajes</h3>
+                @for (h of m.herrajes; track h.id) {
+                  <h4>{{ h.tipo }}</h4>
+                  <p>{{ h.cantidad }} piezas</p>
+                }
+              </div>
+          </div>
+        }
+      </div>
+      <button class="caption btn-main" (click)="onMainClick()">Volver</button>
+    </div>
+
+  <!-- No hay resultados -->
+  } @else {
+    <div class="no-results card">
       <p>No se encontraron resultados.</p>
     </div>
   }
 
-   
 </div>

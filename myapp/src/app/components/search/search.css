@@ -1,66 +1,62 @@
 .journal {
-  width: 100%;
-}
-
-.first.photo {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.image-container2 {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 16px;
-  width: 100%;
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 200px;
+  text-align: center;
+}
+
+.image-container {
+  height: 150px;
+  overflow: hidden;
 }
 
 .user-avatar {
   width: 100%;
-  height: 160px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
 
-.user-avatar:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+.card-content {
+  padding: 0.5rem;
 }
 
-.caption {
-  margin-top: 10px;
-  padding: 10px 14px;
-  border-radius: 8px;
+.btn {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
   border: none;
-  background-color: #ffbf00;
-  color: #000;
-  font-weight: 600;
+  background: #007bff;
+  color: #fff;
+  border-radius: 5px;
   cursor: pointer;
-  transition: transform 0.05s ease, background-color 0.2s ease;
 }
 
-.caption:hover {
-  background-color: #e6ac00;
+.btn:hover {
+  background: #0056b3;
 }
 
-.caption:active {
-  transform: translateY(1px);
+.btn-main {
+  margin-top: 1rem;
+  align-self: center;
 }
 
-.loading,
-.error,
-.no-results {
-  padding: 16px;
+.loading, .error, .no-results {
+  padding: 1rem;
+  border-radius: 10px;
   text-align: center;
-  color: #111827;
+  background: #f8f9fa;
+  color: #333;
 }
-
-.loading {
-  color: #6b7280;
-}
-
-.error {
-  color: #b91c1c;
-}
-
