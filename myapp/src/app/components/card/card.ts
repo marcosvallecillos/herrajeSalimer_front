@@ -8,7 +8,7 @@ import { ModalDeleteComponent } from '../modal-delete/modal-delete.component';
   selector: 'app-card',
   imports: [CommonModule,ModalDeleteComponent],
   templateUrl: './card.html',
-  styleUrl: './card.css'
+  styleUrls: ['./card.css']
 })
 export class Card {
   @Input() muebles: Mueble[] = [];
