@@ -13,6 +13,30 @@
     animation: fadeIn 0.3s ease-in-out;
 }
 
+.close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  padding: 6px;
+  line-height: 1;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease, transform 120ms ease;
+}
+
+.close:hover {
+  background: NONE;
+  color: #111827;
+  transform: scale(1.05);
+}
+
+.close:focus {
+  outline: 2px solid #93c5fd;
+  outline-offset: 2px;
+}
 /* Contenedor del modal */
 .modal-content {
     background: #fff;
@@ -66,6 +90,22 @@
 
 .herrajes-details strong {
     color: #111;
+}
+.herrajes-details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.herrajes-details-table th,
+.herrajes-details-table td {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.herrajes-details-table th {
+    background-color: #f2f2f2;
 }
 
 /* Animaciones */

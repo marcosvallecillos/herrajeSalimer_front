@@ -1,18 +1,30 @@
 @if (show) {
     <div class="modal-overlay">
         <div class="modal-content">
-             <button type="button" class="close" (click)="onClose()">
-            <i class="bi bi-x"></i>
-        </button>
-            <h2>{{ getText(' Herrajes para ', 'Screws for') }} . {{nombre}} </h2>
+            <!-- Botón cerrar -->
+            <button type="button" class="close" (click)="onClose()">
+                <i class="bi bi-x" style="font-size: 1.2rem;"></i>
+            </button>
+
+            <!-- Título -->
+            <h2>{{ getText(' Herrajes para ', 'Screws for') }} {{ nombre }}</h2>
+
             <div class="modal-body">
-                <div class="herrajes-details">
-                    <p><strong>{{ getText('Nombre:', 'Name:') }}</strong> {{ tipo }}</p>
-                    <p><strong>{{ getText('Número de Piezas:', 'Number of Pieces:') }}</strong> {{ cantidad }}</p>
-                </div>
+                <table class="herrajes-details-table">
+                    <thead>
+                        <tr>
+                            <th>{{ getText('Tipo', 'Type') }}</th>
+                            <th>{{ getText('Cantidad', 'Amount') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ tipo }}</td>
+                            <td>{{ cantidad }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-         
         </div>
     </div>
-    }
-    
+}

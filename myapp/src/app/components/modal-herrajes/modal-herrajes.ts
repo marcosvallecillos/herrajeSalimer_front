@@ -18,7 +18,7 @@ export class ModalHerrajes {
   @Output() close = new EventEmitter<void>();
    Herraje: Herraje[] = [];
    mueble: Mueble[] = [];
-  @Input() selectedMueble: string = ''; // Selected mueble name
+  @Input() selectedMueble: string = '';
   isSpanish: boolean = true;
   
     constructor(private languageService: LanguageService) {

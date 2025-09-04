@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Mueble } from '../../models/herrajes.interface';
+import { Mueble , Herraje} from '../../models/herrajes.interface';
 import { ApiService } from '../../services/api-service.service';
 import { ModalDeleteComponent } from '../modal-delete/modal-delete.component';
 import { ModalHerrajes } from '../modal-herrajes/modal-herrajes';
@@ -15,9 +15,9 @@ export class Card {
   @Input() muebles: Mueble[] = [];
   @Output() onDelete = new EventEmitter<number>();
   showModal: boolean = false;
-    showModalHerrajes: boolean = false;
+  showModalHerrajes: boolean = false;
   selectedMueble: Mueble | null = null;
-  selectedHerraje = this.selectedMueble?.herrajes[0] || null;
+  selectedHerraje: Herraje | null = null;
 
   constructor(
     private apiService: ApiService
@@ -43,15 +43,6 @@ export class Card {
       });
     }
   }
-    verHerrajes(mueble: any) {
-    this.selectedMueble = mueble;
-
-    // Aquí podrías traer los datos de herrajes del mueble
-    // Ejemplo: si cada mueble tiene un array herrajes
-    this.selectedHerraje = mueble.herrajes ? mueble.herrajes[0] : null;
-
-    this.showModalHerrajes = true;
-  }
     onCancelMueble() {
     this.showModal = false;
     this.selectedMueble = null;
@@ -60,5 +51,9 @@ export class Card {
     this.showModalHerrajes = false;
     this.selectedMueble = null;
     this.selectedHerraje = null;
+  }
+  openCardHerrajes(){
+    this.showModalHerrajes = true;
+    console.log('abriendo modal')
   }
 }
