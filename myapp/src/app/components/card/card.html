@@ -23,7 +23,7 @@
           <p class="card-text text-muted">{{ mueble?.numero_piezas }} piezas</p>
 
           <div class="d-flex justify-content-center mt-3">
-            <button class="btn btn-outline-primary btn-sm px-3" (click)="openCardHerrajes()">
+            <button class="btn btn-outline-primary btn-sm px-3" (click)="openCardHerrajes(mueble)">
               Ver herrajes
             </button>
 
@@ -43,8 +43,6 @@
 
 <app-modal-herrajes
   [show]="showModalHerrajes"
-  [nombre]="selectedMueble?.nombre ?? ''"
-  [tipo]="selectedHerraje?.tipo ?? ''"
-  [cantidad]="(selectedHerraje?.cantidad ?? '') + ''"
+  [selectedMueble]="selectedMueble"
   (close)="onCloseHerrajes()">
 </app-modal-herrajes>

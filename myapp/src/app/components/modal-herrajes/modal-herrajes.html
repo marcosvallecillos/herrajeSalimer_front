@@ -7,7 +7,7 @@
             </button>
 
             <!-- Título -->
-            <h2>{{ getText(' Herrajes para ', 'Screws for') }} {{ nombre }}</h2>
+            <h2>{{ getText(' Herrajes para ', 'Screws for') }} {{ selectedMueble?.nombre }}</h2>
 
             <div class="modal-body">
                 <table class="herrajes-details-table">
@@ -18,10 +18,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>{{ tipo }}</td>
-                            <td>{{ cantidad }}</td>
-                        </tr>
+                        @for (herraje of selectedMueble?.herrajes; track herraje.id) {
+                            <tr>
+                                <td>{{ herraje.tipo }}</td>
+                                <td>{{ herraje.cantidad }}</td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>

@@ -1,24 +1,19 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Herraje, Mueble } from '../../models/herrajes.interface';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-modal-herrajes',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './modal-herrajes.html',
   styleUrl: './modal-herrajes.css'
 })
 export class ModalHerrajes {
   @Input() show: boolean = false;
-    @Input() nombre: string | null = '';
-
-  @Input() tipo: string | null = '';
-  @Input() cantidad: string = '';
+  @Input() selectedMueble: Mueble | null = null;
   isProcessing: boolean = false;
   @Output() close = new EventEmitter<void>();
-   Herraje: Herraje[] = [];
-   mueble: Mueble[] = [];
-  @Input() selectedMueble: string = '';
   isSpanish: boolean = true;
   
     constructor(private languageService: LanguageService) {

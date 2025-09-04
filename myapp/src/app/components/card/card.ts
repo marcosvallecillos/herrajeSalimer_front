@@ -52,8 +52,9 @@ export class Card {
     this.selectedMueble = null;
     this.selectedHerraje = null;
   }
-  openCardHerrajes(){
+  openCardHerrajes(mueble: Mueble){
+    this.selectedMueble = mueble;
     this.showModalHerrajes = true;
-    console.log('abriendo modal')
+    console.log('abriendo modal para mueble:', mueble);
   }
 }
