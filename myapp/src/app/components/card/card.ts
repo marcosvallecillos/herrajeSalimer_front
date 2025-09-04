@@ -15,6 +15,7 @@ export class Card {
   @Input() muebles: Mueble[] = [];
   @Output() onDelete = new EventEmitter<number>();
   showModal: boolean = false;
+    showModalHerrajes: boolean = false;
   selectedMueble: Mueble | null = null;
   selectedHerraje = this.selectedMueble?.herrajes[0] || null;
 
@@ -42,12 +43,21 @@ export class Card {
       });
     }
   }
+    verHerrajes(mueble: any) {
+    this.selectedMueble = mueble;
+
+    // Aquí podrías traer los datos de herrajes del mueble
+    // Ejemplo: si cada mueble tiene un array herrajes
+    this.selectedHerraje = mueble.herrajes ? mueble.herrajes[0] : null;
+
+    this.showModalHerrajes = true;
+  }
     onCancelMueble() {
     this.showModal = false;
     this.selectedMueble = null;
   }
     onCloseHerrajes() {
-    this.showModal = false;
+    this.showModalHerrajes = false;
     this.selectedMueble = null;
     this.selectedHerraje = null;
   }
