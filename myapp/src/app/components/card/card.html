@@ -40,3 +40,11 @@
   (confirm)="onConfirmMueble()"
   (cancel)="onCancelMueble()">
 </app-modal-delete>
+
+<app-modal-herrajes
+  [show]="showModal"
+  [nombre]="selectedMueble?.nombre ?? ''"
+  [tipo]="selectedHerraje?.tipo ?? ''"
+  [cantidad]="(selectedHerraje?.cantidad ?? '') + ''"
+  (close)="onCloseHerrajes()">
+</app-modal-herrajes>

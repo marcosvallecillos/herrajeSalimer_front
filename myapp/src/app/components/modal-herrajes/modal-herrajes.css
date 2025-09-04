@@ -1,0 +1,86 @@
+
+
+/* Fondo oscuro semitransparente */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Contenedor del modal */
+.modal-content {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: slideIn 0.35s ease;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Botón de cerrar */
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s ease;
+}
+
+.close:hover {
+    color: #e63946;
+}
+
+/* Encabezado */
+.modal-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    color: #222;
+    font-weight: 600;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 0.5rem;
+}
+
+/* Cuerpo del modal */
+.modal-body {
+    margin-top: 1rem;
+}
+
+.herrajes-details p {
+    margin: 0.75rem 0;
+    font-size: 1rem;
+    color: #444;
+}
+
+.herrajes-details strong {
+    color: #111;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

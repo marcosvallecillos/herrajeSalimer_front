@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { Mueble } from '../../models/herrajes.interface';
 import { ApiService } from '../../services/api-service.service';
 import { ModalDeleteComponent } from '../modal-delete/modal-delete.component';
+import { ModalHerrajes } from '../modal-herrajes/modal-herrajes';
 
 @Component({
   selector: 'app-card',
-  imports: [CommonModule,ModalDeleteComponent],
+  imports: [CommonModule,ModalDeleteComponent,ModalHerrajes],
   templateUrl: './card.html',
   styleUrls: ['./card.css']
 })
@@ -15,6 +16,8 @@ export class Card {
   @Output() onDelete = new EventEmitter<number>();
   showModal: boolean = false;
   selectedMueble: Mueble | null = null;
+  selectedHerraje = this.selectedMueble?.herrajes[0] || null;
+
   constructor(
     private apiService: ApiService
   ) { }
@@ -42,5 +45,10 @@ export class Card {
     onCancelMueble() {
     this.showModal = false;
     this.selectedMueble = null;
+  }
+    onCloseHerrajes() {
+    this.showModal = false;
+    this.selectedMueble = null;
+    this.selectedHerraje = null;
   }
 }

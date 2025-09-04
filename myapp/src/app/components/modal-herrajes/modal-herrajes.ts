@@ -10,6 +10,8 @@ import { LanguageService } from '../../services/language.service';
 })
 export class ModalHerrajes {
   @Input() show: boolean = false;
+    @Input() nombre: string | null = '';
+
   @Input() tipo: string | null = '';
   @Input() cantidad: string = '';
   isProcessing: boolean = false;
@@ -28,4 +30,9 @@ export class ModalHerrajes {
     getText(es: string, en: string): string {
       return this.isSpanish ? es : en;
     }
+
+      onClose() {
+    this.close.emit();
+    console.log('Modal closed');
+  }
 }

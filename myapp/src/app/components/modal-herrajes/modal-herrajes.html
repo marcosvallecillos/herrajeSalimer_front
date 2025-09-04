@@ -1,18 +1,17 @@
 @if (show) {
     <div class="modal-overlay">
         <div class="modal-content">
-            <h2>{{ getText('Eliminar Mueble', 'Delete Furniture') }}</h2>
+             <button type="button" class="close" (click)="onClose()">
+            <i class="bi bi-x"></i>
+        </button>
+            <h2>{{ getText(' Herrajes para ', 'Screws for') }} . {{nombre}} </h2>
             <div class="modal-body">
-                <h5>{{ getText('¿Estás seguro que deseas anular este mueble?', 'Are you sure you want to cancel this furniture?') }}</h5>
-                <div class="reservation-details">
-                    <p><strong>{{ getText('Nombre:', 'Name:') }}</strong> {{ nombre }}</p>
-                    <p><strong>{{ getText('Número de Piezas:', 'Number of Pieces:') }}</strong> {{ numero_piezas }}</p>
+                <div class="herrajes-details">
+                    <p><strong>{{ getText('Nombre:', 'Name:') }}</strong> {{ tipo }}</p>
+                    <p><strong>{{ getText('Número de Piezas:', 'Number of Pieces:') }}</strong> {{ cantidad }}</p>
                 </div>
             </div>
-            <div class="modal-actions">
-                <button class="btn-cancel" (click)="onCancel()">{{ getText('Cancelar', 'Cancel') }}</button>
-                <button class="btn-confirm" (click)="onConfirm()">{{ isProcessing ? getText('Eliminando...', 'Deleting...') : getText('Eliminar', 'Delete') }}</button>
-            </div>
+         
         </div>
     </div>
     }
