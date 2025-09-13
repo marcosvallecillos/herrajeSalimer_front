@@ -113,7 +113,17 @@
 .card:hover .card-img-top {
   transform: scale(1.02);
 }
+.botones{
+  gap: 20px;
+}
 
+.fa-solid{
+  font-size: 1.7rem;
+  cursor: pointer;
+}
+.fa-solid:hover{
+  transform: scale(1.1);
+}
 /* Responsive spacing tweaks */
 @media (max-width: 576px) {
   .container {
