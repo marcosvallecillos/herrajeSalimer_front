@@ -4,10 +4,11 @@ import { Mueble , Herraje} from '../../models/herrajes.interface';
 import { ApiService } from '../../services/api-service.service';
 import { ModalDeleteComponent } from '../modal-delete/modal-delete.component';
 import { ModalHerrajes } from '../modal-herrajes/modal-herrajes';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-card',
-  imports: [CommonModule,ModalDeleteComponent,ModalHerrajes],
+  imports: [CommonModule, ModalDeleteComponent, ModalHerrajes, RouterLink],
   templateUrl: './card.html',
   styleUrls: ['./card.css']
 })

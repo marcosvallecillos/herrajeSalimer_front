@@ -1,0 +1,112 @@
+
+<div class="container mb-5 mt-5">
+  <div class="row justify-content-end">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="text-center">Crear Nuevo Mueble</h2>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="createMueble" (ngSubmit)="onSubmit()">
+
+            <!-- ID -->
+           
+
+            <!-- Nombre -->
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombre" formControlName="nombre"
+                placeholder="Introduce el nombre del mueble">
+              @if (getControl('nombre')?.invalid && getControl('nombre')?.touched) {
+                <small class="text-danger">El nombre es obligatorio.</small>
+              }
+            </div>
+
+            <!-- Imagen -->
+            <div class="mb-3">
+              <label for="imagen" class="form-label">Imagen (URL)</label>
+              <input type="text" class="form-control" id="imagen" formControlName="imagen"
+                placeholder="Introduce la URL de la imagen">
+              @if (getControl('imagen')?.invalid && getControl('imagen')?.touched) {
+                <small class="text-danger">La URL de la imagen es obligatoria.</small>
+              }
+            </div>
+
+            <!-- Número de piezas -->
+            <div class="mb-3">
+              <label for="numero_piezas" class="form-label">Número de piezas</label>
+              <input type="number" class="form-control" id="numero_piezas" formControlName="numero_piezas"
+                placeholder="Introduce el número de piezas">
+              @if (getControl('numero_piezas')?.invalid && getControl('numero_piezas')?.touched) {
+                <small class="text-danger">Debe ser un número mayor que 0.</small>
+              }
+            </div>
+
+            <!-- Herrajes -->
+          <!-- Herrajes -->
+<div class="mb-3">
+  <label class="form-label">Herrajes</label>
+
+  <div formArrayName="herrajes">
+    @for (herraje of herrajes.controls; track $index; let i = $index) {
+      <div [formGroupName]="i" class="mb-2 p-2 border rounded">
+        <div class="row">
+          <!-- ID -->
+         
+
+          <!-- Tipo -->
+          <div class="col-md-5">
+            <input type="text" class="form-control" formControlName="tipo" placeholder="Tipo de herraje">
+            @if (herraje.get('tipo')?.invalid && herraje.get('tipo')?.touched) {
+              <small class="text-danger">El tipo es obligatorio.</small>
+            }
+          </div>
+
+          <!-- Cantidad -->
+          <div class="col-md-3">
+            <input type="number" class="form-control" formControlName="cantidad" placeholder="Cantidad">
+            @if (herraje.get('cantidad')?.invalid && herraje.get('cantidad')?.touched) {
+              <small class="text-danger">Debe ser mayor que 0.</small>
+            }
+          </div>
+
+          <!-- Botón eliminar -->
+          <div class="col-md-1 text-end">
+            <button type="button" class="btn btn-danger btn-sm" (click)="eliminarHerraje(i)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Botón añadir -->
+  <button type="button" class="btn btn-outline-primary btn-sm mt-2" (click)="agregarHerraje()">
+    <i class="bi bi-plus-circle"></i> Agregar herraje
+  </button>
+</div>
+
+
+            <div class="text-center mt-4">
+              <button type="submit" class="btn btn-primary me-3" [disabled]="createMueble.invalid">
+                <i class="bi bi-box-seam me-1"></i> Registrar Mueble
+              </button>
+              <button type="button" class="btn btn-secondary" routerLink="/muebles">
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+@if (showAlert) {
+  <div class="alert-overlay">
+    <div class="alert-box">
+      <p>{{ getText('¡Mueble creado con éxito!', 'Furniture successfully created!') }}</p>
+    </div>
+  </div>
+}
