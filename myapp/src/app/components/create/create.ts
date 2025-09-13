@@ -42,14 +42,20 @@ export class Create {
   }
 
 
+  
   onSubmit() {
     if (this.createMueble.invalid) {
       this.createMueble.markAllAsTouched();
       return;
     }
 
-    let mueble: Mueble = this.createMueble.getRawValue() as Mueble;
-
+    let mueble: Mueble = {
+      id: 0,
+      nombre: this.createMueble.getRawValue().nombre,
+      imagen: this.createMueble.getRawValue().imagen,
+      numero_piezas: this.createMueble.getRawValue().numero_piezas,
+      herrajes: this.createMueble.getRawValue().herrajes
+    };
     this.showAlert = true;
     setTimeout(() => {
       this.showAlert = false;
@@ -78,7 +84,6 @@ export class Create {
 
   agregarHerraje() {
     const herrajeForm = this.fb.group({
-      id: [null, Validators.required],
       tipo: ['', Validators.required],
       cantidad: [1, [Validators.required, Validators.min(1)]]
     });
