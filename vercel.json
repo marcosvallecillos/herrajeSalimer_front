@@ -1,20 +1,13 @@
 {
   "version": 2,
-  "builds": [
+  "buildCommand": "cd myapp && npm run build",
+  "outputDirectory": "myapp/dist/myapp",
+  "installCommand": "cd myapp && npm install --legacy-peer-deps",
+  "framework": "angular",
+  "rewrites": [
     {
-      "src": "myapp/package.json",
-      "use": "@vercel/static-build",
-      "config": { 
-        "distDir": "dist/myapp/browser",
-        "installCommand": "cd myapp && npm install --legacy-peer-deps",
-        "buildCommand": "cd myapp && npm run build"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
