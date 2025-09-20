@@ -2,12 +2,12 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
+      "src": "myapp/package.json",
       "use": "@vercel/static-build",
       "config": { 
-        "distDir": "dist/front/browser",
-        "installCommand": "npm install --legacy-peer-deps",
-        "buildCommand": "npm run build -- --base-href /"
+        "distDir": "dist/myapp/browser",
+        "installCommand": "cd myapp && npm install --legacy-peer-deps",
+        "buildCommand": "cd myapp && npm run build"
       }
     }
   ],
