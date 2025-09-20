@@ -56,11 +56,7 @@ export class Create {
       numero_piezas: this.createMueble.getRawValue().numero_piezas,
       herrajes: this.createMueble.getRawValue().herrajes
     };
-    this.showAlert = true;
-    setTimeout(() => {
-      this.showAlert = false;
-      this.confirm.emit();
-    }, 3000);
+     this.showAlert = true;
 
     console.log("Enviando datos:", mueble);
     this.apiService.createMueble(mueble).subscribe({
@@ -72,6 +68,12 @@ export class Create {
         console.error('Error al crear el mueble:', error);
       }
     });
+    setTimeout(() => {
+      this.showAlert = false;
+      this.confirm.emit();
+    }, 3000);
+
+    
   }
 
   getControl(controlName: string) {
