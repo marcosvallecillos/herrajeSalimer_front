@@ -136,3 +136,28 @@
   }
 }
 
+.alert-custom {
+  background: none;
+  margin-top: 100px;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.alert-custom:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.alert-custom .icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+

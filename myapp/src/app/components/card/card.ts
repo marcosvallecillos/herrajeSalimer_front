@@ -15,6 +15,7 @@ import { RouterLink } from '@angular/router';
 export class Card {
   @Input() muebles: Mueble[] = [];
   @Output() onDelete = new EventEmitter<number>();
+  isloading: boolean = false;
   showModal: boolean = false;
   showModalHerrajes: boolean = false;
   selectedMueble: Mueble | null = null;
@@ -23,6 +24,24 @@ export class Card {
   constructor(
     private apiService: ApiService
   ) { }
+
+   ngOnInit() {
+    this.loadMuebles();
+  }
+
+  loadMuebles() {
+    this.isloading = true;
+    this.apiService.getAllMuebles().subscribe({
+      next: (data: Mueble[]) => {
+        this.muebles = data;
+        this.isloading = false;
+      },
+      error: (err) => {
+        console.error('Error cargando muebles', err);
+        this.isloading = false;
+      }
+    });
+  }
   deleteMueble(mueble: Mueble) {
     this.selectedMueble = mueble;
     this.showModal = true;
@@ -32,17 +51,26 @@ export class Card {
     onConfirmMueble() {
     if (this.selectedMueble) {
       const muebleId = this.selectedMueble.id;
+      this.isloading = true;
+
       this.apiService.deleteMueble(muebleId).subscribe({
+
         next: () => {
           this.onDelete.emit(muebleId);
           this.selectedMueble = null;
           this.showModal = false;
+           this.isloading = false;
         },
         error: (error: Error) => {
-          console.error('Error al eliminar el mueble', error);
+          console.error('Error al eliminar el mueble', error)
+          this.isloading = false;
         }
+
+        
       });
+       
     }
+
   }
     onCancelMueble() {
     this.showModal = false;
