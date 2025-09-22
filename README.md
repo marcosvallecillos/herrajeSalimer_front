@@ -41,4 +41,8 @@ npm install
 
 ng serve
 
-<img width="1291" height="614" alt="image" src="https://github.com/user-attachments/assets/d6be3153-b6c6-41ef-b893-f1a2eb4c14a4" />
+```
+
+![Descripción de la imagen](myapp/puvblic/herrajeSalimer.jpeg)
+
+
