@@ -34,12 +34,19 @@ Esta aplicación web, desarrollada con **Angular**, permite a los usuarios visua
 ```bash
 [git clone https://github.com/marcosvallecillos/herrajeSalimer_front.git
 ]
-
-cd myapp
-
+```
+2. Instala los paquetes de NPM
+```bash
 npm install
-
+```
+3.Ejecuta el proyecto
+```bash
+cd myapp
 ng serve
+```
+
+
+
 
 ```
 
