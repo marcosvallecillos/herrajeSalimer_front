@@ -5,7 +5,10 @@
 Esta aplicación web, desarrollada con **Angular**, permite a los usuarios visualizar los herrajes de cada mueble mediante un **buscador intuitivo**. Además, incluye funcionalidades de **gestión de muebles**, como la creación, edición y eliminación de registros, facilitando el control y la organización del inventario de manera eficiente.
 
 ---
+## Capturas de la web
+![Descripción de la imagen](myapp/public/images/herrajeSalimer.jpeg)
 
+---
 ## Funcionalidades
 
 - **Buscador de herrajes:** Encuentra rápidamente los herrajes de cualquier mueble.  
@@ -44,13 +47,6 @@ npm install
 cd myapp
 ng serve
 ```
-
-
-
-
-
-
-![Descripción de la imagen](myapp/public/images/herrajeSalimer.jpeg)
 
 
 
