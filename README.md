@@ -43,6 +43,6 @@ ng serve
 
 ```
 
-![Descripción de la imagen](myapp/public/herrajeSalimer.jpeg)
+![Descripción de la imagen](myapp/public/images/herrajeSalimer.jpeg)
 
 
