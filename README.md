@@ -23,7 +23,7 @@ Esta aplicación web, desarrollada con **Angular**, permite a los usuarios visua
 - **Lenguajes:** TypeScript, HTML, CSS  
 - **Herramientas adicionales:**  
   - Angular Material / Bootstrap (si se usan componentes UI)  
-  - RxJS para manejo de datos reactivo  
+
 
 ---
 
