@@ -48,13 +48,27 @@
         </div>
 
         <div class="form-group">
-          <label for="herrajes">{{ getText('Teléfono', 'Phone') }}</label>
-          <input type="text" 
-                 class="form-control" 
-                 id="herrajes" 
-                 name="herrajes"
-                 [(ngModel)]="muebles.herrajes"
-                 [class.is-invalid]="errors['herrajes']">
+          <label>{{ getText('Herrajes', 'Screws') }}</label>
+          @if (muebles?.herrajes?.length) {
+          <table class="herrajes-details-table">
+            <thead>
+              <tr>
+                <th>{{ getText('Tipo', 'Type') }}</th>
+                <th>{{ getText('Cantidad', 'Amount') }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (herraje of muebles.herrajes; track herraje.id) {
+              <tr>
+                <td>{{ herraje.tipo }}</td>
+                <td>{{ herraje.cantidad }}</td>
+              </tr>
+              }
+            </tbody>
+          </table>
+          } @else {
+          <div class="text-muted">{{ getText('Sin herrajes', 'No screws') }}</div>
+          }
           @if (errors['herrajes']) {
           <div class="invalid-feedback">{{ errors['herrajes'] }}</div>
           }

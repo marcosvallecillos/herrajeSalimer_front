@@ -85,10 +85,10 @@ export class ModalEdit implements OnChanges {
       this.errors['num_piezas'] = this.getText('El numero de piezas es obligatorio', 'Email is required');
     }
 
-    // Herrajes validation
-    if (!this.muebles.herrajes || String(this.muebles.herrajes).trim() === '') {
-      this.errors['herrajes'] = this.getText('El teléfono es obligatorio', 'Phone is required');
-    } 
+    // Herrajes validation (array requerido)
+    if (!Array.isArray(this.muebles.herrajes) || this.muebles.herrajes.length === 0) {
+      this.errors['herrajes'] = this.getText('Debe tener al menos 1 herraje', 'At least 1 screw is required');
+    }
 
   
     return Object.keys(this.errors).length === 0;
