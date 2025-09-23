@@ -30,8 +30,13 @@ export class ModalEdit implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedMueble'] && this.selectedMueble) {
-      // Crear una copia editable y fijar el ID
-      this.muebles = { ...this.selectedMueble } as Mueble;
+      // Crear una copia editable y fijar el ID (deep copy de herrajes)
+      this.muebles = {
+        ...(this.selectedMueble as Mueble),
+        herrajes: Array.isArray(this.selectedMueble.herrajes)
+          ? this.selectedMueble.herrajes.map(h => ({ ...h }))
+          : []
+      } as Mueble;
       this.muebleId = this.selectedMueble.id;
     }
   }
@@ -90,6 +95,14 @@ export class ModalEdit implements OnChanges {
       this.errors['herrajes'] = this.getText('Debe tener al menos 1 herraje', 'At least 1 screw is required');
     }
 
+    // Validar cada herraje
+    if (Array.isArray(this.muebles.herrajes)) {
+      const invalidIndex = this.muebles.herrajes.findIndex(h => !h || !h.tipo || String(h.tipo).trim() === '' || h.cantidad == null || Number(h.cantidad) < 0);
+      if (invalidIndex !== -1) {
+        this.errors['herrajes'] = this.getText('Completa tipo y cantidad (>= 0) en todos los herrajes', 'Fill type and quantity (>= 0) in all screws');
+      }
+    }
+
   
     return Object.keys(this.errors).length === 0;
   }
@@ -98,6 +111,17 @@ export class ModalEdit implements OnChanges {
   const re = /\.(jpg|jpeg|png|gif|webp|bmp|svg)$/i;
   return re.test(nombreArchivo);
 }
+  addHerraje() {
+    if (!this.muebles) return;
+    if (!Array.isArray(this.muebles.herrajes)) this.muebles.herrajes = [] as any;
+    const newId = (this.muebles.herrajes[this.muebles.herrajes.length - 1]?.id ?? 0) + 1;
+    this.muebles.herrajes.push({ id: newId, tipo: '', cantidad: 0 });
+  }
+
+  removeHerraje(index: number) {
+    if (!this.muebles || !Array.isArray(this.muebles.herrajes)) return;
+    this.muebles.herrajes.splice(index, 1);
+  }
      guardarCambios() {
   if (this.validarFormulario() && this.muebles && this.muebleId > 0) {
     this.loading = true;

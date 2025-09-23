@@ -49,23 +49,41 @@
 
         <div class="form-group">
           <label>{{ getText('Herrajes', 'Screws') }}</label>
-          @if (muebles?.herrajes?.length) {
+          @if (muebles.herrajes.length) {
           <table class="herrajes-details-table">
             <thead>
               <tr>
                 <th>{{ getText('Tipo', 'Type') }}</th>
                 <th>{{ getText('Cantidad', 'Amount') }}</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
-              @for (herraje of muebles.herrajes; track herraje.id) {
+              @for (herraje of muebles.herrajes; track herraje.id; let i = $index) {
               <tr>
-                <td>{{ herraje.tipo }}</td>
-                <td>{{ herraje.cantidad }}</td>
+                <td>
+                  <input type="text"
+                         class="form-control"
+                         [(ngModel)]="muebles.herrajes[i].tipo"
+                         name="herraje_tipo_{{i}}">
+                </td>
+                <td>
+                  <input type="number"
+                         class="form-control"
+                         min="0"
+                         [(ngModel)]="muebles.herrajes[i].cantidad"
+                         name="herraje_cantidad_{{i}}">
+                </td>
+                <td style="width: 1%; white-space: nowrap;">
+                  <button type="button" class="btn btn-secondary" (click)="removeHerraje(i)">-</button>
+                </td>
               </tr>
               }
             </tbody>
           </table>
+          <div style="margin-top: .5rem;">
+            <button type="button" class="btn btn-primary" (click)="addHerraje()">{{ getText('Agregar herraje', 'Add screw') }}</button>
+          </div>
           } @else {
           <div class="text-muted">{{ getText('Sin herrajes', 'No screws') }}</div>
           }
