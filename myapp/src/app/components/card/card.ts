@@ -19,6 +19,8 @@ export class Card {
   isloading: boolean = false;
   showModal: boolean = false;
   showModalHerrajes: boolean = false;
+    showModalEdit: boolean = false;
+
   selectedMueble: Mueble | null = null;
   selectedHerraje: Herraje | null = null;
 
@@ -90,7 +92,7 @@ export class Card {
   }
   openModalEdit(mueble: Mueble) {
     this.selectedMueble = mueble;
-    this.showModal = true;
+    this.showModalEdit = true;
     console.log('abriendo modal para mueble:', mueble);
   }
    cerrarModal() {
@@ -103,6 +105,7 @@ export class Card {
   loading = false;
   
    onGuardarMueble(mueble: Mueble) {
+    console.log('Guardando mueble:', mueble);
     if (!mueble || !mueble.id) {
       this.errorMessage = 'El mueble no tiene un ID válido.';
       return;

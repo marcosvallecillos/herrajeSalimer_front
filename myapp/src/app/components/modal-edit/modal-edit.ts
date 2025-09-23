@@ -55,7 +55,7 @@ export class ModalEdit {
     this.errors = {};
 
     if (!this.muebles) {
-      this.errorMessage = this.getText('Datos de usuario no disponibles', 'User data not available');
+      this.errorMessage = this.getText('Datos de mueble no disponibles', 'User data not available');
       return false;
     }
 
