@@ -69,10 +69,10 @@
 </app-modal-herrajes>
 
 <app-modal-edit
-  [show]="showModal"
+  [show]="showModalEdit"
   [selectedMueble]="selectedMueble"
   (confirm)="onGuardarMueble($event)"
-  (cancel)="cerrarModal()">
+  (cancel)="onCancelEdit()">
 </app-modal-edit>
 
 @if(successMessage) {

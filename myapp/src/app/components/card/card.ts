@@ -19,7 +19,7 @@ export class Card {
   isloading: boolean = false;
   showModal: boolean = false;
   showModalHerrajes: boolean = false;
-    showModalEdit: boolean = false;
+  showModalEdit: boolean = false;
 
   selectedMueble: Mueble | null = null;
   selectedHerraje: Herraje | null = null;
@@ -95,8 +95,8 @@ export class Card {
     this.showModalEdit = true;
     console.log('abriendo modal para mueble:', mueble);
   }
-   cerrarModal() {
-    this.showModal = false;
+   onCancelEdit() {
+    this.showModalEdit = false;
     this.selectedMueble = null;
   }
 
@@ -121,7 +121,7 @@ export class Card {
         console.log('Respuesta del servidor:', response);
 
         this.loading = false;
-        this.cerrarModal();
+        this.onCancelEdit();
 
         // aquí podrías refrescar la lista de muebles
         this.loadMuebles();

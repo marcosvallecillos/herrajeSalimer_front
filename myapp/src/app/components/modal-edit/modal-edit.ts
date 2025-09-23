@@ -1,31 +1,40 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { Mueble } from '../../models/herrajes.interface';
 import { LanguageService } from '../../services/language.service';
 import { FormsModule } from '@angular/forms';
-import { NgClass } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { ApiService } from '../../services/api-service.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal-edit',
-  imports: [FormsModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './modal-edit.html',
   styleUrl: './modal-edit.css'
 })
-export class ModalEdit {
- @Input() show: boolean = false;
+export class ModalEdit implements OnChanges {
+  @Input() show: boolean = false;
   @Input() nombre: string | null = '';
   @Input() numero_piezas: string = '';
   isProcessing: boolean = false;
-    errors: { [key: string]: string } = {};
+  errors: { [key: string]: string } = {};
   loading = false;
   successMessage: string = '';
   errorMessage: string = '';
   muebleId: number = 0;
-  @Output() confirm = new EventEmitter();
+  @Output() confirm = new EventEmitter<Mueble>();
   @Output() cancel = new EventEmitter<void>();
-   muebles: Mueble | null = null; 
+  muebles: Mueble | null = null; 
   @Input() selectedMueble: Mueble | null = null;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['selectedMueble'] && this.selectedMueble) {
+      // Crear una copia editable y fijar el ID
+      this.muebles = { ...this.selectedMueble } as Mueble;
+      this.muebleId = this.selectedMueble.id;
+    }
+  }
 
   onCancel() {
     this.cancel.emit(); 
@@ -37,7 +46,7 @@ export class ModalEdit {
     setTimeout(() => {
       this.isProcessing = false;  
     }, 2000); 
- this.confirm.emit(); 
+ this.confirm.emit(this.muebles as Mueble); 
     }
 
    isSpanish: boolean = true;
@@ -109,8 +118,8 @@ export class ModalEdit {
           'Furniture updated successfully'
         );
 
-        // 👉 Emitir confirm al padre
-        this.confirm.emit();
+        // 👉 Emitir confirm al padre con los datos actualizados
+        this.confirm.emit(this.muebles as Mueble);
 
         setTimeout(() => {
           this.router.navigate(['/home']);
