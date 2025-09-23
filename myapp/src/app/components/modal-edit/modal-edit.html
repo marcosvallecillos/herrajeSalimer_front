@@ -1,0 +1,98 @@
+@if (show) {
+<div class="modal-overlay">
+  <div class="modal-content edit-furniture-modal">
+    <div class="edit-furniture-header">
+      <h1>{{ getText('Editar Mueble', 'Edit furniture') }}</h1>
+    </div>
+
+    @if (muebles) {
+    <div class="edit-furniture-card">
+      <form (ngSubmit)="guardarCambios()" #editForm="ngForm">
+        <div class="form-group">
+          <label for="nombre">{{ getText('Nombre', 'Name') }}</label>
+          <input type="text" 
+                 class="form-control" 
+                 id="nombre" 
+                 name="nombre"
+                 [(ngModel)]="muebles.nombre"
+                 [class.is-invalid]="errors['nombre']">
+          @if (errors['nombre']) {
+          <div class="invalid-feedback">{{ errors['nombre'] }}</div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="imagen">{{ getText('Umagen', 'Image') }}</label>
+          <input type="text" 
+                 class="form-control" 
+                 id="imagen" 
+                 name="imagen"
+                 [(ngModel)]="muebles.imagen"
+                 [class.is-invalid]="errors['imagen']">
+          @if (errors['imagen']) {
+          <div class="invalid-feedback">{{ errors['imagen'] }}</div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="num_piezas">{{ getText('num_piezas', 'num_piezas') }}</label>
+          <input type="number" 
+                 class="form-control" 
+                 id="num_piezas" 
+                 name="num_piezas"
+                 [(ngModel)]="muebles.numero_piezas"
+                 [class.is-invalid]="errors['num_piezas']">
+          @if (errors['num_piezas']) {
+          <div class="invalid-feedback">{{ errors['num_piezas'] }}</div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="herrajes">{{ getText('Teléfono', 'Phone') }}</label>
+          <input type="text" 
+                 class="form-control" 
+                 id="herrajes" 
+                 name="herrajes"
+                 [(ngModel)]="muebles.herrajes"
+                 [class.is-invalid]="errors['herrajes']">
+          @if (errors['herrajes']) {
+          <div class="invalid-feedback">{{ errors['herrajes'] }}</div>
+          }
+        </div>
+
+       
+
+        @if (successMessage) {
+        <div class="alert alert-success">
+          {{ successMessage }}
+        </div>
+        }
+
+        @if (errorMessage) {
+        <div class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+        }
+
+        <div class="furniture-actions">
+          <button type="button" 
+                  class="btn btn-secondary animated-button"
+                  (click)="onCancel()"
+                  [disabled]="loading">
+            <i class="bi bi-x-circle me-2"></i>{{ getText('Cancelar', 'Cancel') }}
+          </button>
+          <button type="submit" class="btn btn-primary" [disabled]="loading">
+            @if (loading) {
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            {{ getText('Guardando...', 'Saving...') }}
+            } @else {
+            {{ getText('Guardar Cambios', 'Save Changes') }}
+            }
+          </button>
+        </div>
+      </form>
+    </div>
+    } 
+  </div>
+</div>
+}

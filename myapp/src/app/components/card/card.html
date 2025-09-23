@@ -49,7 +49,7 @@
                   Ver herrajes
                 </button>
 
-                <i class="fa-solid fa-pen-to-square"></i>
+                <i class="fa-solid fa-pen-to-square" (click)="openModalEdit(mueble)"></i>
               </div>
             </div>
           </div>
@@ -67,3 +67,17 @@
 
 <app-modal-herrajes [show]="showModalHerrajes" [selectedMueble]="selectedMueble" (close)="onCloseHerrajes()">
 </app-modal-herrajes>
+
+<app-modal-edit
+  [show]="showModal"
+  [selectedMueble]="selectedMueble"
+  (confirm)="onGuardarMueble($event)"
+  (cancel)="cerrarModal()">
+</app-modal-edit>
+
+@if(successMessage) {
+  <div  class="alert alert-success">{{ successMessage }}</div>
+  }
+  @if(errorMessage) {
+<div  class="alert alert-danger">{{ errorMessage }}</div>
+}

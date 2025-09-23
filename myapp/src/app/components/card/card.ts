@@ -4,11 +4,12 @@ import { Mueble , Herraje} from '../../models/herrajes.interface';
 import { ApiService } from '../../services/api-service.service';
 import { ModalDeleteComponent } from '../modal-delete/modal-delete.component';
 import { ModalHerrajes } from '../modal-herrajes/modal-herrajes';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { ModalEdit } from '../modal-edit/modal-edit';
 
 @Component({
   selector: 'app-card',
-  imports: [CommonModule, ModalDeleteComponent, ModalHerrajes, RouterLink],
+  imports: [CommonModule, ModalDeleteComponent, ModalHerrajes, RouterLink, ModalEdit],
   templateUrl: './card.html',
   styleUrls: ['./card.css']
 })
@@ -22,7 +23,8 @@ export class Card {
   selectedHerraje: Herraje | null = null;
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private router: Router
   ) { }
 
    ngOnInit() {
@@ -86,4 +88,61 @@ export class Card {
     this.showModalHerrajes = true;
     console.log('abriendo modal para mueble:', mueble);
   }
+  openModalEdit(mueble: Mueble) {
+    this.selectedMueble = mueble;
+    this.showModal = true;
+    console.log('abriendo modal para mueble:', mueble);
+  }
+   cerrarModal() {
+    this.showModal = false;
+    this.selectedMueble = null;
+  }
+
+    errorMessage: string = '';
+  successMessage: string = '';
+  loading = false;
+  
+   onGuardarMueble(mueble: Mueble) {
+    if (!mueble || !mueble.id) {
+      this.errorMessage = 'El mueble no tiene un ID válido.';
+      return;
+    }
+
+    this.loading = true;
+    this.successMessage = '';
+    this.errorMessage = '';
+
+    this.apiService.editMueble(mueble.id, mueble).subscribe({
+      next: (response) => {
+        this.successMessage = 'Mueble actualizado con éxito ✅';
+        console.log('Respuesta del servidor:', response);
+
+        this.loading = false;
+        this.cerrarModal();
+
+        // aquí podrías refrescar la lista de muebles
+        this.loadMuebles();
+      },
+      error: (error) => {
+        console.error('Error al actualizar el mueble:', error);
+
+        if (error.status === 404) {
+          this.errorMessage = 'Error: Mueble no encontrado.';
+        } else if (error.status === 405) {
+          this.errorMessage = 'Error: Método no permitido.';
+        } else {
+          this.errorMessage = 'Error al actualizar el mueble. Intenta de nuevo.';
+        }
+
+        this.loading = false;
+      }
+    });
+  }
+
+  cancelar() {
+    this.router.navigate(['/home']);
+  }
+
+ 
+
 }
