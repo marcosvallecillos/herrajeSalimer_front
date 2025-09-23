@@ -10,24 +10,24 @@ import { Herraje, Mueble } from '../../models/herrajes.interface';
     imports: [ReactiveFormsModule],
   templateUrl: './create.html',
   styleUrls: ['./create.css']
-})
-export class Create {
+})export class Create {
   isSpanish: boolean = true;
   showAlert: boolean = false;
+  successMessage: string = '';
+  errorMessage: string = '';
 
-  createMueble!: FormGroup;   // 👈 declarada, pero no inicializada todavía
+  createMueble!: FormGroup;   
 
   constructor(
     private apiService: ApiService,
     private router: Router,
     private languageService: LanguageService,
-    private fb: FormBuilder    // 👈 Angular inyecta aquí el FormBuilder
+    private fb: FormBuilder   
   ) {
     this.languageService.isSpanish$.subscribe(
       isSpanish => this.isSpanish = isSpanish
     );
 
-    // 👇 Aquí sí ya existe fb
     this.createMueble = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(2)]],
       imagen: ['', [Validators.required, Validators.minLength(2)]],
@@ -35,45 +35,9 @@ export class Create {
       herrajes: this.fb.array([])
     });
   }
-  @Output() confirm = new EventEmitter<void>();
 
   getText(es: string, en: string): string {
     return this.isSpanish ? es : en;
-  }
-
-
-  
-  onSubmit() {
-    if (this.createMueble.invalid) {
-      this.createMueble.markAllAsTouched();
-      return;
-    }
-
-    let mueble: Mueble = {
-      id: 0,
-      nombre: this.createMueble.getRawValue().nombre,
-      imagen: this.createMueble.getRawValue().imagen,
-      numero_piezas: this.createMueble.getRawValue().numero_piezas,
-      herrajes: this.createMueble.getRawValue().herrajes
-    };
-     this.showAlert = true;
-
-    console.log("Enviando datos:", mueble);
-    this.apiService.createMueble(mueble).subscribe({
-      next: (data) => {
-        console.log('Mueble creado:', data);
-        this.router.navigate(['/home']);
-      },
-      error: (error) => {
-        console.error('Error al crear el mueble:', error);
-      }
-    });
-    setTimeout(() => {
-      this.showAlert = false;
-      this.confirm.emit();
-    }, 3000);
-
-    
   }
 
   getControl(controlName: string) {
@@ -94,5 +58,42 @@ export class Create {
 
   eliminarHerraje(index: number) {
     this.herrajes.removeAt(index);
+  }
+
+  onSubmit() {
+    if (this.createMueble.invalid) {
+      this.createMueble.markAllAsTouched();
+      return;
+    }
+
+    const mueble: Mueble = {
+      id: 0,
+      nombre: this.createMueble.value.nombre,
+      imagen: this.createMueble.value.imagen,
+      numero_piezas: this.createMueble.value.numero_piezas,
+      herrajes: this.createMueble.value.herrajes
+    };
+
+    this.showAlert = true;
+    this.successMessage = '';
+    this.errorMessage = '';
+
+    this.apiService.createMueble(mueble).subscribe({
+      next: (data) => {
+        console.log('Mueble creado:', data);
+        this.successMessage = this.getText('¡Mueble creado con éxito!', 'Furniture successfully created!');
+        setTimeout(() => {
+          this.showAlert = false;
+          this.router.navigate(['/home']);
+        }, 3000);
+      },
+      error: (error) => {
+        console.error('Error al crear el mueble:', error);
+        this.errorMessage = this.getText('¡Mueble creado sin éxito!', 'Furniture unsuccessfully created!');
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 3000);
+      }
+    });
   }
 }
